@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Consolas, "Microsoft YaHei";
+}
+a{
+	color:#000000;
+	text-decoration:none;
+}
+
+#container{
+	width: 100%;
+	height: 100vh;
+}
+
+.wrap{
+	position: relative;
+	top:20%;
+	text-align:center;
+}
+
+.wrap img{
+	border-radius: 64px;
+	width: 128px;
+	height:128px;	
+}
+
+.wrap img:hover
+{
+	transform: scale(1.5);
+	transition: transform .2s;
+}
+.nav{
+	margin-top:10px;
+}
+
+.nav a{
+	font-size:18px;
+	margin: 0 5px;
+}
+
+.nav a:hover{
+	color: blue;
+}
+
+
+h1
+{
+	margin-top:15px;
+}
+
+
