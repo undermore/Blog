@@ -14,6 +14,14 @@
 	<c:forEach items="${mainCategory}" var="mainCate">
 		<!-- 把单个元素 mainCate 中的 name 属性 输出到页面-->
 		${mainCate.name}
+		
+		<!-- mainCate 中还有一个容器数据 包含了这个主类别里面所有的 子类别  -->
+		<!-- 继续用 forEach 遍历子类别 也就是 mainCate 的 sublist 属性，里面的元素起名字叫 subCate -->
+		<c:forEach items="${mainCate.sublist}" var="subCate">
+			<!-- 把子类别的名字输出到页面-->
+			${subCate.name}
+		</c:forEach>
+					
 	</c:forEach>
 			
 </body>
