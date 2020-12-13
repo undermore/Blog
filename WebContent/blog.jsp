@@ -10,5 +10,11 @@
 </head>
 <body>
 	博客主页
+	<!-- 使用 c 里面的  forEach 功能遍历  mainCategory 容器，其中的每个元素 起名字叫 mainCate -->
+	<c:forEach items="${mainCategory}" var="mainCate">
+		<!-- 把单个元素 mainCate 中的 name 属性 输出到页面-->
+		${mainCate.name}
+	</c:forEach>
+			
 </body>
 </html>
