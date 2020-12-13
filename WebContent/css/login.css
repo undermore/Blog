@@ -1,0 +1,38 @@
+#main {
+    width: 100%;
+    height: 100vh;
+}
+
+.wrap {
+    position: relative;
+    top: 20%;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+.btn {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    margin: 10px 0;
+}
+
+.half {
+	margin: 0 0 10px 0;
+	width: 50%;
+	float: left
+}
+
+#img{
+    margin: 0 0 10px 50px;
+   	float: left
+}
+
+.img-wrap{
+    align-items: center;
+    margin-top: 10px;
+}
