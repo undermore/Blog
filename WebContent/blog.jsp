@@ -7,9 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>博客</title>
+
+<%
+    //这里直接写 java 代码，用jsp内置对象 request 得到网站的地址 ctx
+	String ctx = request.getContextPath();
+%>		
+			
 </head>
 <body>
-	博客主页
+	<!-- 这里用 尖括号%= 输出变量 ctx 构造一个超链接 -->
+	<a href="<%=ctx %>/index.html">博客主页</a>
+	
 	<!-- 使用 c 里面的  forEach 功能遍历  mainCategory 容器，其中的每个元素 起名字叫 mainCate -->
 	<c:forEach items="${mainCategory}" var="mainCate">
 		<!-- 把单个元素 mainCate 中的 name 属性 输出到页面-->
