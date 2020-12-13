@@ -15,12 +15,11 @@ import java.sql.DriverManager;
 import com.mysql.jdbc.Driver;
 
 
-
 public class DBUtils {
 
 	private final String UserName = "root";  //数据库登录名，根据实际情况填写
 	private final String PassWord = "";      //数据库密码，根据实际情况填写
-	private final String Url = "jdbc:mysql://localhost:3306/";  //数据库地址，根据实际情况填写
+	private final String Url = "jdbc:mysql://localhost:3306/";  //数据库服务器的地址，根据实际情况填写
 	private final String DBName = "blog";  //数据库的名字，根据实际情况填写
 	
 	private Connection connection = null;  //连接对象
@@ -32,6 +31,14 @@ public class DBUtils {
 	public Connection getConnection()
 	{
 		//在这里初始化 Connection 对象
+		try {
+			Driver driver = new com.mysql.jdbc.Driver(); //得到数据库连接驱动
+			DriverManager.registerDriver(driver);        //注册这个驱动
+			connection = DriverManager.getConnection(Url+DBName, UserName, PassWord); //用前面设定的用户名密码连接数据库服务器
+		} catch(Exception e) 
+		{
+			throw new RuntimeException("获取数据库连接失败", e);
+		}
 		return connection;
 	}
 	
@@ -45,6 +52,42 @@ public class DBUtils {
 		//每一个Map容器 又放在了 List 容器中
 		List<Map<String ,Object>> ret = new ArrayList<Map<String ,Object>>();
 	
+		//编译，预处理sql语句
+		pst = connection.prepareStatement(sql);
+		//把 sql 语句中的参数 逐个替换成 param 容器中的数值
+		if(pst!=null && param != null) 
+		{
+			for(int i=0; i<param.size(); i++) 
+			{ 
+				pst.setObject(i+1, param.get(i));
+			}
+		}
+		
+		//执行 sql 语句 并得到结果
+		result = pst.executeQuery(); 
+		//取出结果中的数据类型、属性、行数等等信息
+		ResultSetMetaData metaData = result.getMetaData();
+		//取得数据的列数
+		int cols = metaData.getColumnCount();
+		
+		//遍历结果 解析出来 装到 ret 里面
+		while(result.next()) 
+		{
+			Map<String,Object> map = new HashMap<String,Object>();
+			for(int i=0; i<cols; i++) 
+			{
+				//每条数据的每一列 逐一解析
+				String colName = metaData.getColumnLabel(i+1); //列的名字 列就是字段
+				Object obj = result.getObject(colName);//列的值 字段的值
+				if(obj == null) 
+				{
+					obj = "";
+				}
+				map.put(colName, obj);//字段 放到 map 里
+			}
+			ret.add(map); //把 map 放到 ret 里
+		}
+		
 		return ret;
 	}
 	
