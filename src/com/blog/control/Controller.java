@@ -65,6 +65,9 @@ public class Controller extends HttpServlet {
 			else if(act.equals("3")) {
 				request.getRequestDispatcher("/null.jsp").forward(request, response);
 			}
+			else if(act.equals("10")) {
+				request.getRequestDispatcher("/admin/manage.jsp").forward(request, response);
+			}
 		} 
 		else
 		{
