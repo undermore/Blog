@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
 		response.setHeader("Content-Type", "text/html;charset=utf-8");  //告诉浏览器 Response 使用 utf-8编码
 		response.getWriter().append("我们在这里处理浏览器的请求，默认情况中文是乱码");
 		
-		
+		String info = request.getParameter("info"); //取得info参数 
 		List<MainCategory> mainCategory = new ArrayList<MainCategory>();  //这个容器装所有的 主类别
 		ArticleInfo searchInfo = new ArticleInfo(); //搜索条件  默认是查找全部文章
 		

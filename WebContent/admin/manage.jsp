@@ -19,6 +19,29 @@
 <script src="<%=ctx %>/js/jquery.min.js"></script>
 <script src="<%=ctx %>/js/blog.js"></script>
 
+<script>
+function loadXMLDoc(uri)
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+		xmlhttp = new XMLHttpRequest();//其他浏览器
+	else
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); //IE5 IE6 浏览器
+	
+	xmlhttp.onreadystatechange=function()
+	{
+		//readyState==4 代表载入完成    xmlhttp.status==200 代表载入正常
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			//替换 id 为 ajax-div 的div中的内容
+			document.getElementById("ajax-div").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("POST", uri, true); //true 代表异步加载
+	xmlhttp.send();//发起访问页面的请求
+}
+</script>
+
 </head>
 <body>
 	
@@ -28,7 +51,7 @@
             </div>
             <div class="main-nav">
                 <ul>
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" onclick="loadXMLDoc('<%=ctx %>/servlet/Controller?act=11&info=all')" >
                     	<li>所有文章</li>
                     </a>
                     <a href="javascript:void(0);">
@@ -42,6 +65,10 @@
                     </a>
                 </ul>
             </div>
+	</div>
+	
+	<div id="ajax-div">
+	
 	</div>
         
 </body>
