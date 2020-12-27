@@ -40,6 +40,29 @@ function loadXMLDoc(uri)
 	xmlhttp.open("POST", uri, true); //true 代表异步加载
 	xmlhttp.send();//发起访问页面的请求
 }
+
+function getSubCatagory() {
+    var main_id = $("#main_id").val(); //得到当前 主类别下拉菜单 对应的值
+    $.ajax({
+        dataType: "json",    //数据类型为json格式
+        type: "GET",         //用 get 方式
+        url: "<%=ctx %>/servlet/CategoryServlet?act=ajaxSub",  //CategoryServlet 返回该主类别下的全部子类 json格式 Key Value 键值对
+        //把主类别的id发给 servlet
+     	data: {"main_id":main_id},
+        success: function (data, textStatus) {
+            var sub_id = $("#sub_id"); //得到 子类别下拉菜单 对象
+            sub_id.empty(); //清空子类别下拉菜单
+            sub_id.append('<option value="0">全部子类别</option>');
+            $.each(data, function (key, val) {
+                sub_id.append('<option value="' + key + '">' + val + '</option>');
+            })
+        },
+        error: function (xhr, status, errMsg) {
+            alert("获取子类别失败");
+        }
+    })
+};
+
 </script>
 
 </head>
