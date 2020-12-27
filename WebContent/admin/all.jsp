@@ -59,8 +59,9 @@
                    <select class="form-control" name="main_id" id="main_id">
                        <option value="0">全部主类别</option> <!-- 主类别的值改变时 子类别内容要随之改变 -->
                        
-                       <option value="1">新闻</option>
-                       <option value="2">评论</option>
+                       <c:forEach items="${mainCategory}" var="category">
+                       		<option value="${category.id} }">${category.name}</option>
+                       </c:forEach>
                        
                    </select>
                    <select class="form-control" name="sub_id" id="sub_id">
