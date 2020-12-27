@@ -56,7 +56,7 @@
            </c:if>
            <div class="fiter col-md-4">
                <form class="form-horizontal form-inline" method="post" id="postForm">
-                   <select class="form-control" name="main_id" id="main_id">
+                   <select class="form-control" name="main_id" id="main_id" onchange="getSubCatagory()">
                        <option value="0">全部主类别</option> <!-- 主类别的值改变时 子类别内容要随之改变 -->
                        
                        <c:forEach items="${mainCategory}" var="category">
