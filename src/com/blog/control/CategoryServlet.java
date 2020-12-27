@@ -38,6 +38,23 @@ public class CategoryServlet extends HttpServlet {
 		SubCategoryDao subCategoryDao = new SubCategoryDao(); 
 		List<SubCategory> subList = subCategoryDao.getSubCategory(main_id); //根据 main_id 查找所有的子类别
         Map<Integer, String> map = new HashMap<Integer, String>();  //放到 Map 容器中
+              
+        for (SubCategory item : subList)  //子类别放到 Map 容器中
+        	map.put(item.getId(), item.getName());
+        
+        Gson gson = new Gson();  //声明一个 Gson 对象
+        String json = gson.toJson(map); //将 Map 转换成 json 数据
+        response.setContentType("application/json"); //设置 response 的数据类型为 json
+        
+        PrintWriter writer = null;
+        try {
+        	writer = response.getWriter(); 
+        	writer.print(json);  //将 json 数据写到 response 中返回给浏览器
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        	writer.close();
+        }
 	}
 
 }
