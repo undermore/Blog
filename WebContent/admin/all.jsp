@@ -20,6 +20,12 @@
 	<div id="list" class="col-md-10 col-xs-12">
            <h3>文章列表</h3>
            <hr>
+           <c:if test="${fn:length(articleList) eq 0 }">
+           		<!-- 如果为空则 显示提示信息 -->
+               <span>查询的结果不存在</span>
+           </c:if>
+           <c:if test="${fn:length(articleList) gt 0 }">
+				<!-- 如果非空则用 articleList 中的数据填充 table -->
                <table class="table table-hover">
                    <thead> <!-- table的 head 部分列出要显示的要素的名字  -->
                    <tr>
@@ -47,7 +53,7 @@
                    
             		</tbody>
                </table>
-           
+           </c:if>
            <div class="fiter col-md-4">
                <form class="form-horizontal form-inline" method="post" id="postForm">
                    <select class="form-control" name="main_id" id="main_id">
