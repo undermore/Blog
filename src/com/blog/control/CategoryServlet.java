@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.blog.dao.SubCategoryDao;
 import com.blog.model.SubCategory;
-
+import com.google.gson.Gson;
 
 @WebServlet("/servlet/CategoryServlet")
 public class CategoryServlet extends HttpServlet {
