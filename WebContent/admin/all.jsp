@@ -37,12 +37,12 @@
                    </tr>
                    </thead>
                    <tbody>
-                   
+                     <c:forEach items="${articleList}" var="article">
 	                   <tr> <!-- table的 body 部分列出要显示的具体内容，这些内容下一步会被替换成数据库中的数据  -->
-	                       <td>标题</td>
-	                       <td>文章的标题</td>
-	                       <td>教育相关</td>
-	                       <td>2020-12-24 13:03</td>
+	                       <td>${article.title}</td>
+                       	   <td>${article.mname}</td>
+                           <td>${article.sname}</td>
+                           <td>${article.create_date}</td>
 	                       <td>
 	                           <a> <!-- 编辑按钮接下来需要定向到文章的编辑页面  -->
 	                               <button type="button" class="btn btn-primary">编辑</button>
@@ -50,7 +50,7 @@
 	                           <button type="button" class="btn btn-danger">删除</button>
 	                       </td>
 	                   </tr>
-                   
+                      </c:forEach>
             		</tbody>
                </table>
            </c:if>
