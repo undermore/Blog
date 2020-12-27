@@ -60,7 +60,7 @@
                        <option value="0">全部主类别</option> <!-- 主类别的值改变时 子类别内容要随之改变 -->
                        
                        <c:forEach items="${mainCategory}" var="category">
-                       		<option value="${category.id} }">${category.name}</option>
+                       		<option value="${category.id}">${category.name}</option>
                        </c:forEach>
                        
                    </select>
