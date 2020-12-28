@@ -71,4 +71,28 @@ public class ArticleDao {
 
 		return ret;
 	}
+	
+	public boolean addArticle(Article article) 
+	{
+		//【8-2】参照 getArticles() 方法构造一个 sql 语句 insert... 
+		//将 article 中的各个属性添加到一个 List<Object> 容器中
+		//调用 dbUtils 中的 update() 方法 执行这个 sql 语句
+		DBUtils dbUtils = new DBUtils(); 
+		dbUtils.getConnection(); 
+		List<Object> paramList = new ArrayList<Object>();//把参数添加到  paramList
+		String sql = "insert...";
+		return dbUtils.update(sql, paramList);
+	}
+	
+	public boolean delArticle(int id) 
+	{
+		//【9-2】参照 getArticles() 方法构造一个 sql 语句 "delete from article where id=..."
+		//调用 dbUtils 中的 update() 方法 执行这个 sql 语句
+		DBUtils dbUtils = new DBUtils(); 
+		dbUtils.getConnection(); 
+		String sql = "delete from article where id=...";
+		List<Object> paramList = new ArrayList<Object>();//把参数添加到  paramList
+		//paramList 中只有一个参数 就是将要删除的文章的id
+		return dbUtils.update(sql, paramList);
+	}
 }

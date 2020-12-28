@@ -91,4 +91,22 @@ public class DBUtils {
 		return ret;
 	}
 	
+	public boolean update(String sql, List<Object> param)
+	{
+		//【8-3】参照 getResult() 方法 将参数 param 添加到 sql 语句
+		// 使用 PreparedStatement 对象的 executeUpdate() 方法执行 sql 语句
+		// executeUpdate() 返回值大于0 则返回 true 代表成功 否则返回 false 代表执行失败
+		int result = 0;
+		try {
+			pst = connection.prepareStatement(sql);
+			result = pst.executeUpdate(sql); 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result>0;
+	}
+	
+	
 }
