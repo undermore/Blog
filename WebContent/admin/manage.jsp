@@ -77,7 +77,7 @@ function getSubCatagory() {
                     <a href="javascript:void(0);" onclick="loadXMLDoc('<%=ctx %>/servlet/Controller?act=11&info=all')" >
                     	<li>所有文章</li>
                     </a>
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" onclick="loadXMLDoc('<%=ctx %>/servlet/Controller?act=12')">
                         <li>写文章</li>
                     </a>
                     <a href="javascript:void(0);">
