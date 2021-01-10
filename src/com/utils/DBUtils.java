@@ -99,7 +99,12 @@ public class DBUtils {
 		int result = 0;
 		try {
 			pst = connection.prepareStatement(sql);
-			result = pst.executeUpdate(sql); 
+			if (param != null && pst != null) {
+		        for (int i = 0; i < param.size(); i++) {
+		        	pst.setObject(i+1, param.get(i));
+		        }
+		    }
+			result = pst.executeUpdate(); 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

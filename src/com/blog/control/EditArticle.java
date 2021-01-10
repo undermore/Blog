@@ -11,6 +11,7 @@ import com.blog.dao.ArticleDao;
 import com.blog.model.Article;
 
 //【7】添加代码使这个servlet类响应 edit.jsp 中的表单提交  4分
+@WebServlet("/servlet/EditArticle")
 public class EditArticle extends HttpServlet {
 
 

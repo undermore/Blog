@@ -90,9 +90,10 @@ public class ArticleDao {
 		//调用 dbUtils 中的 update() 方法 执行这个 sql 语句
 		DBUtils dbUtils = new DBUtils(); 
 		dbUtils.getConnection(); 
-		String sql = "delete from article where id=...";
+		String sql = "delete from article where id=?";
 		List<Object> paramList = new ArrayList<Object>();//把参数添加到  paramList
 		//paramList 中只有一个参数 就是将要删除的文章的id
+		paramList.add(id);
 		return dbUtils.update(sql, paramList);
 	}
 }
