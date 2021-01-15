@@ -77,10 +77,10 @@ function getSubCatagory() {
 function delArticle(id){
 	$.ajax({
         type: "POST",
-        url: "",  //这里填写servlet的地址
+        url: "<%=ctx %>/servlet/EditArticle",  //这里填写servlet的地址
         data: {
-            "act": "??", //将问号换成正确的值
-            "id": id
+            "act": "del", //将问号换成正确的值
+            "aid": id
         },
         success: function (data) {
             alert(data);

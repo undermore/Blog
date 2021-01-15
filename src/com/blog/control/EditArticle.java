@@ -53,7 +53,7 @@ public class EditArticle extends HttpServlet {
         	else
         		response.getWriter().append("发布失败");
         	
-        } else if(act.equals("delete")) 
+        } else if(act.equals("del")) 
         {
         	//【9-1】在这里删除一篇文章  第9题共20分 包含3个小题 9-1 9-2 9-3
         	ArticleDao adao = new ArticleDao();

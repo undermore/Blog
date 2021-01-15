@@ -47,7 +47,7 @@
 	                           <a> <!-- 编辑按钮接下来需要定向到文章的编辑页面  -->
 	                               <button type="button" class="btn btn-primary">编辑</button>
 	                           </a> <!-- 删除按钮接下来要实现文章删除  -->
-	                           <a href="<%=ctx %>/servlet/EditArticle?act=delete&aid=${article.id}">
+	                           <a href="javascript:void(0);" onclick="delArticle(${article.id})">
 	                           <button type="button" class="btn btn-danger">删除</button>
 	                           </a>
 	                       </td>
