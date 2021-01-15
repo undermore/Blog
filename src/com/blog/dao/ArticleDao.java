@@ -86,8 +86,8 @@ public class ArticleDao {
 		paramList.add(article.getSubtitle());
 		paramList.add(article.getHtml_content());
 		paramList.add(article.getCreate_date());
-    	paramList.add(1);//article.getCate_id()
-    	paramList.add(1);//article.getSub_cate_id()
+    	paramList.add(article.getCate_id());
+    	paramList.add(article.getSub_cate_id());
     	paramList.add(article.getName());
     	paramList.add(1);
         
