@@ -23,7 +23,7 @@
 <script src="<%=ctx %>/js/editormd.min.js"></script>
 
 <script>
-function loadXMLDoc(uri)  //【1】给这个函数增加一个参数 用来判断要不要载入 editorMD，相应的 调用这个函数的位置 也要增加一个参数 4分
+function loadXMLDoc(uri, init)  //【1】给这个函数增加一个参数 用来判断要不要载入 editorMD，相应的 调用这个函数的位置 也要增加一个参数 4分
 {
 	var xmlhttp;
 	if (window.XMLHttpRequest)
@@ -38,6 +38,11 @@ function loadXMLDoc(uri)  //【1】给这个函数增加一个参数 用来判�
 		{
 			//替换 id 为 ajax-div 的div中的内容
 			document.getElementById("ajax-div").innerHTML=xmlhttp.responseText;
+			if(init==1)
+			{
+				initEditor();
+				fillTime();
+			}
 			//【2】在这里判断新增的参数 载入编辑页面的时候执行 fillTime() 和 initEditor() 函数 4分 
 		}
 	}
@@ -94,7 +99,7 @@ function initEditor()
 	    width: "100%",
 	    height: 650,
 	    syncScrolling: "single",
-	    path: "xxx/lib/",  //【3】把这里改成 editorMD依赖库的正确路径  4分 （editorMD的依赖库在 lib.zip压缩包中，解压后放到一个固定位置）
+	    path: "<%=ctx %>/admin/lib/",  //【3】把这里改成 editorMD依赖库的正确路径  4分 （editorMD的依赖库在 lib.zip压缩包中，解压后放到一个固定位置）
 	    saveHTMLToTextarea: true
 	});
 }
@@ -121,10 +126,10 @@ function fillTime()
             </div>
             <div class="main-nav">
                 <ul>
-                    <a href="javascript:void(0);" onclick="loadXMLDoc('<%=ctx %>/servlet/Controller?act=11&info=all')" >
+                    <a href="javascript:void(0);" onclick="loadXMLDoc('<%=ctx %>/servlet/Controller?act=11&info=all', 0)" >
                     	<li>所有文章</li>
                     </a>
-                    <a href="javascript:void(0);" onclick="loadXMLDoc('<%=ctx %>/servlet/Controller?act=12')">
+                    <a href="javascript:void(0);" onclick="loadXMLDoc('<%=ctx %>/servlet/Controller?act=12', 1)">
                         <li>写文章</li>
                     </a>
                     <a href="javascript:void(0);">
