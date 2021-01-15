@@ -80,7 +80,17 @@ public class ArticleDao {
 		DBUtils dbUtils = new DBUtils(); 
 		dbUtils.getConnection(); 
 		List<Object> paramList = new ArrayList<Object>();//把参数添加到  paramList
-		String sql = "insert...";
+		String sql = "insert into article(title,subtitle,html_content,create_date,cate_id,sub_cate_id,name,user_id) values(?,?,?,?,?,?,?,?);";
+		
+		paramList.add(article.getTitle());
+		paramList.add(article.getSubtitle());
+		paramList.add(article.getHtml_content());
+		paramList.add(article.getCreate_date());
+    	paramList.add(1);//article.getCate_id()
+    	paramList.add(1);//article.getSub_cate_id()
+    	paramList.add(article.getName());
+    	paramList.add(1);
+        
 		return dbUtils.update(sql, paramList);
 	}
 	

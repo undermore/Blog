@@ -17,7 +17,7 @@
 <body>
 
 <!-- 【6】给 form-inline 表单指定 action 和 method 属性 使得表单提交到 /servlet/EditArticle路径 并传一个参数 act=add    4分-->
-	<form class="form-inline">
+	<form class="form-inline" action="<%=ctx %>/servlet/EditArticle?act=add" method="post">
             <div id="edit" class="col-md-8 col-xs-12">
                 <h3>编辑文章</h3>
                 <hr/>
