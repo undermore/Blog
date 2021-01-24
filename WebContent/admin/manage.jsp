@@ -109,6 +109,10 @@ function fillTime()
 {
 	var d = new Date();
 	$("#year").val(d.getFullYear());
+	$("#month").val(d.getMonth()+1);
+	$("#day").val(d.getDate());
+	$("#hour").val(d.getHours());
+	$("#minute").val(d.getMinutes());
 	//【4】在这里填充 月 日 时 分  4*2=8分
 	
 }
